@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2>Rest api documentation:</h2>
+    <h3>Login to view users nearby:</h3>
+    <form enctype='application/json' method="post" action='/api/login/'>
+      Username: 
+      <input type='text' name='username' value='' size="15">
+      Password:
+      <input type='password' name='password' value='' size="15">
+      <br>
+      <p>Latitude:
+      <input type='text' name='latitude' value='' size="6">
+      Longitude:
+      <input type='text' name='longitude' value='' size="6"></p>
+      <p>Find users within distance: 
+      <input type='text' name='distance' value='' size="10">
+      <input type="submit" value="Submit"></p>
+    </form>
+    <br>
+    <h3>Number of users: <%= userAmount %></h3>
+    <p><b>/api//users</b> - Show all users (<a href="/api/users">link to endpoint</a>)</p>    
+    <p><b>/api//user/&lt;id&gt;</b> - Show user with the specific id</p>
+    <h3>Number of locationblogs: <%= userAmount %></h3>
+    <p><b>/api//locationblogs</b> - Show all locationblogs (<a href="/api/locationblogs">link to endpoint</a>)</p>
+    <p><b>/api//locationblog/&lt;id&gt;</b> - Show locationblog with the specific id</p>
+  </body>
+</html>
+

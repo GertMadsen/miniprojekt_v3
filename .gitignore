@@ -1,0 +1,5 @@
+#Node modules libraries
+node_modules
+
+# Database settings:
+settings.js
