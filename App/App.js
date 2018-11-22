@@ -227,9 +227,9 @@ class FriendsScreen extends React.Component {
           {this.state.friends.map(friend => {
             return <MapView.Marker
             key={friend.username}
-            coordinate={{ longitude: friend.latitude, latitude: friend.longitude }}
+            coordinate={{ longitude: friend.longitude, latitude: friend.latitude }}
             title={"Your friend "+friend.username+" is here."}
-            description={"Latitude: "+friend.longitude+", Longitude: "+friend.latitude}
+            description={"Latitude: "+friend.latitude+", Longitude: "+friend.longitude}
             pinColor='green'
           />
           })}
