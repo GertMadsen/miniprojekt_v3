@@ -169,6 +169,7 @@ class FriendsScreen extends React.Component {
 
 
   _getLocationAsync = async () => {
+    const { navigation } = this.props;
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
       this.setState({
@@ -177,37 +178,32 @@ class FriendsScreen extends React.Component {
     }
     let location = await Location.getCurrentPositionAsync({});
     const { latitude, longitude } = location.coords;
-    this.setState({ latitude, longitude })
     let userToSend = {
       username: this.state.user,
       password: this.state.password,
-      longitude: this.state.longitude,
-      latitude: this.state.latitude,
+      longitude: longitude,
+      latitude: latitude,
       distance: Number(this.state.distance),
     }  
-    const { navigation } = this.props;
-     const opt = {method: "POST", 
+    const opt = {method: "POST", 
                   body: JSON.stringify(userToSend),
                   headers: new Headers({
                     "Content-Type": 'application/json'
                     })
                   }
-     const response = await fetch(serverURL+"/api/login", opt ).then(res => res.json());
-     if (response.status == 403) {
-      navigation.navigate('Denied');
-     }             
-
-     this.setState({friends: response.friends, isLoading: false})
+    const response = await fetch(serverURL+"/api/login", opt ).then(res => res.json());
     
+    if (response.status == 403) {
+      navigation.navigate('Denied');
+    }             
+    let friends = response.friends;
+    this.setState({latitude, longitude, friends, isLoading: false});
   };
 
 
 
   render() {
-
     const { navigation } = this.props;
-    this.state.friends.map(friend => console.log(friend.username))
-    console.log(this.state.friends)
     return (
       this.state.isLoading ? <Text>Loading..</Text> :
 
@@ -224,23 +220,20 @@ class FriendsScreen extends React.Component {
 
           <MapView.Marker
             coordinate={{ longitude: this.state.longitude, latitude: this.state.latitude }}
-            title={"You"}
+            title={"You are here."}
             description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
           />
 
-           <MapView.Marker
-            coordinate={{ longitude: this.state.longitude, latitude: this.state.latitude+0.01 }}
-            title={"Nearby Friend"}
-            description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
+          {this.state.friends.map(friend => {
+            return <MapView.Marker
+            key={friend.username}
+            coordinate={{ longitude: friend.latitude, latitude: friend.longitude }}
+            title={"Your friend "+friend.username+" is here."}
+            description={"Latitude: "+friend.longitude+", Longitude: "+friend.latitude}
             pinColor='green'
           />
+          })}
 
-          {/* <MapView.Marker
-            coordinate={{ longitude: this.state.longitude+0.01, latitude: this.state.latitude }}
-            title={"Nearby Friend"}
-            description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
-            pinColor='green'
-          /> */}
 
         </MapView>        
         </View>

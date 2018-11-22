@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "NaviDemo",
-    "description": "This project is really great.",
-    "slug": "navidemo",
+    "name": "FriendFinder",
+    "description": "Find friends registered in your database within a given radius.",
+    "slug": "friendfinder",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
