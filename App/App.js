@@ -167,6 +167,7 @@ class FriendsScreen extends React.Component {
     });
   }
 
+
   _getLocationAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
     if (status !== 'granted') {
@@ -195,6 +196,7 @@ class FriendsScreen extends React.Component {
      if (response.status == 403) {
       navigation.navigate('Denied');
      }             
+
      this.setState({friends: response.friends})
     
   };
