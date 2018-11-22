@@ -42,9 +42,9 @@ async function createUsers(){
   var users = await Promise.all(userPromises);
 
   var positionPromises = [
-    positionCreator(10, 11, users[0]._id),
-    positionCreator(11, 12, users[1]._id, true),
-    positionCreator(11, 13, users[2]._id, true)
+    positionCreator(55.7, 12.4, users[0]._id),
+    positionCreator(55.8, 12.8, users[1]._id, true),
+    positionCreator(55.6, 12.3, users[2]._id, true)
   ]
   var positions = await Promise.all(positionPromises);
 
