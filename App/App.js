@@ -177,7 +177,7 @@ class FriendsScreen extends React.Component {
     }
     let location = await Location.getCurrentPositionAsync({});
     const { latitude, longitude } = location.coords;
-    this.setState({ latitude, longitude, isLoading: false })
+    this.setState({ latitude, longitude })
     let userToSend = {
       username: this.state.user,
       password: this.state.password,
@@ -197,7 +197,7 @@ class FriendsScreen extends React.Component {
       navigation.navigate('Denied');
      }             
 
-     this.setState({friends: response.friends})
+     this.setState({friends: response.friends, isLoading: false})
     
   };
 
@@ -206,8 +206,11 @@ class FriendsScreen extends React.Component {
   render() {
 
     const { navigation } = this.props;
+    this.state.friends.map(friend => console.log(friend.username))
+    console.log(this.state.friends)
     return (
       this.state.isLoading ? <Text>Loading..</Text> :
+
       <View style={styles.containerStyle}>
         <MapView
           style={styles.mapStyle}
@@ -222,15 +225,22 @@ class FriendsScreen extends React.Component {
           <MapView.Marker
             coordinate={{ longitude: this.state.longitude, latitude: this.state.latitude }}
             title={"You"}
-            description={"Latitude: "+this.state.latitude.toFixed(7)+", Longitude: "+this.state.longitude.toFixed(7)}
+            description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
           />
 
            <MapView.Marker
-            coordinate={{ longitude: this.state.longitude, latitude: friend_lat }}
+            coordinate={{ longitude: this.state.longitude, latitude: this.state.latitude+0.01 }}
             title={"Nearby Friend"}
-            description={"Latitude: "+friend_lat.toFixed(7)+", Longitude: "+this.state.longitude.toFixed(7)}
+            description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
             pinColor='green'
           />
+
+          {/* <MapView.Marker
+            coordinate={{ longitude: this.state.longitude+0.01, latitude: this.state.latitude }}
+            title={"Nearby Friend"}
+            description={"Latitude: "+this.state.latitude+", Longitude: "+this.state.longitude}
+            pinColor='green'
+          /> */}
 
         </MapView>        
         </View>
