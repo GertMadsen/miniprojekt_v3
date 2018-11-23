@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, Button, View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Constants, Location, Permissions, MapView } from 'expo';
+import Login from './components/login/Login';
 
 const serverURL = "http://46.101.214.160"
 
@@ -84,64 +85,73 @@ class LoginScreen extends React.Component {
       title: 'Login',
     };
   };
-  state = {
-    user: '',
-    password: '',
-    distance: ''
- }
- 
- handleUser = (text) => {
-    this.setState({ user: text })
- }
- handlePassword = (text) => {
-    this.setState({ password: text })
- }
- handleDistance = (text) => {
-  this.setState({ distance: text })
- }
 
-  render() {
-    const { navigation } = this.props;
+  render(){
+    return(
+      <Login
+        ref={ref => this._login = ref}
+      />
+    )
 
-    return (
-      <View style={{ flex: 1, alignItems: 'center' }}>
-        <Text style = {styles.text}>Login to view friends nearby:</Text>
-      <TextInput style = {styles.input}
-         underlineColorAndroid = "transparent"
-         placeholder = " Username"
-         placeholderTextColor = "#9a73ef"
-         autoCapitalize = "none"
-         onChangeText = {this.handleUser}/>
-      
-      <TextInput style = {styles.input}
-         underlineColorAndroid = "transparent"
-         placeholder = " Password"
-         placeholderTextColor = "#9a73ef"
-         autoCapitalize = "none"
-         onChangeText = {this.handlePassword}/>
-      
-      <TextInput style = {styles.input}
-         underlineColorAndroid = "transparent"
-         placeholder = " Distance to search"
-         placeholderTextColor = "#9a73ef"
-         autoCapitalize = "none"
-         onChangeText = {this.handleDistance}/>
-         
-      <TouchableOpacity
-         style = {styles.submitButton}
-         onPress = {
-            () => {
-              navigation.navigate('Friends', {
-                user: this.state.user, password: this.state.password, distance: this.state.distance
-              })
-            }
-         }>
-         <Text style = {styles.submitButtonText}> Submit </Text>
-      </TouchableOpacity>
-
-      </View>
-    );
   }
+//   state = {
+//     user: '',
+//     password: '',
+//     distance: ''
+//  }
+ 
+//  handleUser = (text) => {
+//     this.setState({ user: text })
+//  }
+//  handlePassword = (text) => {
+//     this.setState({ password: text })
+//  }
+//  handleDistance = (text) => {
+//   this.setState({ distance: text })
+//  }
+
+//   render() {
+//     const { navigation } = this.props;
+
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center' }}>
+//         <Text style = {styles.text}>Login to view friends nearby:</Text>
+//       <TextInput style = {styles.input}
+//          underlineColorAndroid = "transparent"
+//          placeholder = " Username"
+//          placeholderTextColor = "#9a73ef"
+//          autoCapitalize = "none"
+//          onChangeText = {this.handleUser}/>
+      
+//       <TextInput style = {styles.input}
+//          underlineColorAndroid = "transparent"
+//          placeholder = " Password"
+//          placeholderTextColor = "#9a73ef"
+//          autoCapitalize = "none"
+//          onChangeText = {this.handlePassword}/>
+      
+//       <TextInput style = {styles.input}
+//          underlineColorAndroid = "transparent"
+//          placeholder = " Distance to search"
+//          placeholderTextColor = "#9a73ef"
+//          autoCapitalize = "none"
+//          onChangeText = {this.handleDistance}/>
+         
+//       <TouchableOpacity
+//          style = {styles.submitButton}
+//          onPress = {
+//             () => {
+//               navigation.navigate('Friends', {
+//                 user: this.state.user, password: this.state.password, distance: this.state.distance
+//               })
+//             }
+//          }>
+//          <Text style = {styles.submitButtonText}> Submit </Text>
+//       </TouchableOpacity>
+
+//       </View>
+//     );
+// }
 }
 
 class FriendsScreen extends React.Component {
