@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var LocationBlog = require("../models/LocationBlog.js");
+var LocationBlog = require("../models/locationBlog.js");
 
 function getAllBlogs() {
     return LocationBlog.find({}).exec();

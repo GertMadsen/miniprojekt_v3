@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodejs ./bin/www",
+    "local": "nodemon ./bin/www",
     "dev": "SET DEBUG=miniproject:* & nodemon ./bin/www",
     "test": "SET DEBUG=miniproject:* & mocha"
   },

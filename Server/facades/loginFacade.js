@@ -20,8 +20,8 @@ async function find_nearby_friends(position, dist) {
 
     friends = friends_positions.map(element => {
         let username = element.user.userName 
-        let lon = element.loc.coordinates[0]
-        let lat = element.loc.coordinates[1]
+        let lat = element.loc.coordinates[0]
+        let lon = element.loc.coordinates[1]
         return {username: username, longitude: lon, latitude: lat}
          
     })
@@ -40,7 +40,7 @@ async function login(username,password,longitude,latitude,distance) {
             { user: user._id },
             { loc: { 
                 type: "Point", 
-                coordinates: [longitude, latitude] }
+                coordinates: [latitude, longitude] }
                 , created: Date.now() },
             { upsert: true, new : true }          
             ).exec();
