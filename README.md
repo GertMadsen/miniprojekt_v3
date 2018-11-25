@@ -8,3 +8,7 @@ Der bliver checket om det er et korrekt brugernavn/password.
 Såfremt dette er tilfældet vil man kunne se de venner der findes i databasen indenfor den givne radius.
 Trykker man på en markeringsnål vil man få info om hvilken bruger det er og dennes position.
 
+## Backend er deployed og kører som en service på en SSL sikret Droplet
+## App'en er publisheret på Expo.
+
+
