@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {Constants, Location, Permissions, MapView} from 'expo';
 
-const serverURL = "http://46.101.214.160"
+const serverURL = "https://www.ramsbone.dk"
 
 class Friends extends Component {
     constructor(props) {
