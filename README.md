@@ -1,4 +1,4 @@
-# miniprojekt_v3
+# Miniprojekt version 3
 ## Lene-Annette Skov & Gert Lehmann Madsen
 
 ## Hvad App'en indeholder:
