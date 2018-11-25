@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import {Constants, Location, Permissions, MapView} from 'expo';
 
@@ -12,7 +12,7 @@ class Friends extends Component {
             location: null,
             errorMessage: null,
             isLoading: true,
-            friends: [],
+            friends: []
         }
     }
 
@@ -60,6 +60,7 @@ class Friends extends Component {
 
         if (response.status == 403) {
             navigation.navigate('Denied');
+            return;
         }
         let friends = response.friends;
         this.setState({ latitude, longitude, friends, isLoading: false });
