@@ -4,7 +4,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Constants, Location, Permissions, MapView } from 'expo';
 import Login from './components/login/Login';
 
-const serverURL = "http://46.101.214.160"
+const serverURL = "https://www.ramsbone.dk"
 
 class HomeScreen extends React.Component {
   
