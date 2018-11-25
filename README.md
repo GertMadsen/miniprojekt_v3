@@ -11,4 +11,8 @@ Trykker man på en markeringsnål vil man få info om hvilken bruger det er og d
 ## Backend er deployed og kører som en service på en SSL sikret Droplet
 ## App'en er publisheret på Expo.
 
+Vi har ikke fået implementeret GameArea og de dertil hørende funktioner.
+Vi har også valgt ikke at medtage push notificationer da vi hellere ville koncentrere os om at have fuldt overblik og indsigt i den kode vi anvender frem for at have meget kode.
+
+
 
