@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, TouchableOpacity, Text} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import {withNavigation} from 'react-navigation';
 
-export default class LoginForm extends Component{
-    constructor(props){
+class LoginForm extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             user: '',
             password: '',
             distance: ''
         }
-    } 
+    }
     handleUser = (text) => {
         this.setState({ user: text })
     }
@@ -20,10 +21,10 @@ export default class LoginForm extends Component{
         this.setState({ distance: text })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <View style={styles.container}>
-                <TextInput 
+                <TextInput
                     placeholder="Username"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     returnKeyType="next"
@@ -31,17 +32,18 @@ export default class LoginForm extends Component{
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    style = {styles.input}
-                    onChangeText = {this.handleUser}
+                    style={styles.input}
+                    onChangeText={this.handleUser}
                 />
-                <TextInput 
+                <TextInput
                     placeholder="password"
                     placeholderTextColor='rgba(255,255,255,0.7)'
                     returnKeyType="next"
                     onSubmitEditing={() => this.distanceInput.focus()}
+                    autoCapitalize="none"
                     secureTextEntry
-                    style = {styles.input}
-                    onChangeText = {this.handlePassword}
+                    style={styles.input}
+                    onChangeText={this.handlePassword}
                     ref={(input) => this.passwordInput = input}
                 />
 
@@ -51,17 +53,25 @@ export default class LoginForm extends Component{
                     returnKeyType="go"
                     keyboardType="numeric"
                     style={styles.input}
-                    onChangeText = {this.handleDistance}
+                    onChangeText={this.handleDistance}
                     ref={(input) => this.distanceInput = input}
                 />
 
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => {
+                        this.props.navigation.navigate('Friends', {
+                            user: this.state.user, password: this.state.password, distance: this.state.distance
+                        })
+                    }}>
                     <Text style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>
             </View>
         );
     }
 }
+
+export default withNavigation(LoginForm);
 
 const styles = StyleSheet.create({
     container: {
