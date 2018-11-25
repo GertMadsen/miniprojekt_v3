@@ -88,9 +88,7 @@ class LoginScreen extends React.Component {
 
   render(){
     return(
-      <Login
-        ref={ref => this._login = ref}
-      />
+      <Login/>
     )
 
   }
