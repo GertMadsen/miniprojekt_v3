@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Welcome',
+      title: 'Friends Finder App - Home',
       headerRight: (
         <Button
           onPress={() => {
@@ -84,7 +84,7 @@ class HomeScreen extends React.Component {
 class LoginScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Login',
+      title: 'Login Screen',
     };
   };
 
@@ -96,6 +96,11 @@ class LoginScreen extends React.Component {
 }
 
 class FriendsScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Nearby Friends',
+    };
+  };
   render() {
     return (
       <Friends />
@@ -104,6 +109,11 @@ class FriendsScreen extends React.Component {
 }
 
 class DeniedScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Access Denied',
+    };
+  };
   render() {
     return (
       <AccessDenied/>
@@ -120,7 +130,6 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-    /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: '#f4511e',
