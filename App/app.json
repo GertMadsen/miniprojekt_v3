@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "FriendFinder",
+    "name": "FriendsFinder",
     "description": "Find friends registered in your database within a given radius.",
-    "slug": "friendfinder",
+    "slug": "friendsfinder",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
